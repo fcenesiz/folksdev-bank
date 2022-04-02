@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  rabbit_mq:
+    container_name: rabbit_mq
+    image: rabbitmq:latest
+    ports:
+      - 5673:5672 # rabbitmq core
+      - 15673:15672 # rabbitmq UI
+
+  core:
+    image: bank:1.0
+    container_name: bank
+    build: . # . yerine Dockerfile'daki app'da yazabiliriz.
+    ports:
+      - 9090:8080 # dışardan erişim:içerden erişim
+    depends_on:
+      - rabbit_mq  # uygulamanın çalışabilmesi için önce rabbit_mq ayağa kalkmalı
+    links:
+      - rabbit_mq
+
+
+# docker-compose down -remove-orphans
+# docker-compose up --build
+# docker system prune -a
+# docker build -t bank:1.0 .
