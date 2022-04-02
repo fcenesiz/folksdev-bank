@@ -9,6 +9,7 @@ import com.folksdev.folksdevbank.repository.CustomerRepository;
 import com.folksdev.folksdevbank.request.CreateAccountRequest;
 import com.folksdev.folksdevbank.request.UpdateAccountRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,6 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final CustomerService customerService;
     private final AccountDtoConverter accountDtoConverter;
-
-
 
     public AccountDto createAccount(CreateAccountRequest accountRequest){
 
@@ -102,4 +101,6 @@ public class AccountService {
 
         return accountOpt.map(accountDtoConverter::convert).orElse(new AccountDto());
     }
+
+
 }

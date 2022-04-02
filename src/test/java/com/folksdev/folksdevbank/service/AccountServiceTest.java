@@ -12,6 +12,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.amqp.core.AmqpTemplate;
 
 public class AccountServiceTest {
 
@@ -21,6 +22,7 @@ public class AccountServiceTest {
     private AccountRepository accountRepository;
     private CustomerService customerService;
     private AccountDtoConverter accountDtoConverter;
+
 
     @Before
     public void setUp() {

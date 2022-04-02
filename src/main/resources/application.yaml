@@ -1,13 +1,12 @@
-server:
-  port: 8088
-
 spring:
   rabbitmq:
-    host: localhost
-    port: 5672
+    host: rabbit_mq # docker-compose'daki container_name ile aynı olmalı
+    port: 5672 # docker-compose'daki port ile aynı olmalı
     username: guest
     password: guest
     template:
+      retry: # düzgün çalışana kadar yeniden dene
+        enabled: true
       exchange: sample.example
       default-receive-queue: sample.queue
 

@@ -4,9 +4,6 @@ import com.folksdev.folksdevbank.model.Account;
 import com.folksdev.folksdevbank.model.City;
 import com.folksdev.folksdevbank.model.Currency;
 import lombok.*;
-import org.hibernate.Hibernate;
-
-import java.util.Objects;
 
 @Getter
 @Setter
